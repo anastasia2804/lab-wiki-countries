@@ -4,15 +4,47 @@ import countriesArray from '../countries.json'
 
 function CountyDetails (props) {
 
-const { countryCode } =useParams()
-console.log(countryCode)
+const { countryCode } = useParams()
 
-const foundCountry = countriesArray.find((singleCountry) => {  
-    return singleCountry.alpha3Code === countryCode
-  });
+const foundCountry = countriesArray.find((element) => {   
+  return element.alpha3Code === countryCode;
+});
 
-
-    return <p>country details page</p>
+    return (
+      <div class="col-7">
+      <h1>{foundCountry.name.official}</h1>
+      <table class="table">
+        <thead></thead>
+        <tbody>
+          <tr>
+            <td>Capital</td>
+            <td>{foundCountry.capital}</td>
+          </tr>
+          <tr>
+            <td>Area</td>
+            <td>
+              {foundCountry.area} km
+              <sup>2</sup>
+            </td>
+          </tr>
+          <tr>
+            <td>Borders</td>
+            <td>
+              
+              {foundCountry.borders.map((el) => {
+                return (
+                  <ul>
+                    <li>{el}</li>
+                  </ul>
+                )
+              })}
+             
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    )
 }
 
 export default CountyDetails;
