@@ -13,6 +13,7 @@ const foundCountry = countriesArray.find((element) => {
     return (
       <div class="col-7">
       <h1>{foundCountry.name.official}</h1>
+      <img src={`https://flagpedia.net/data/flags/icon/72x54/${foundCountry.alpha2Code.toLowerCase()}.png`} alt={foundCountry.name.official} />
       <table class="table">
         <thead></thead>
         <tbody>

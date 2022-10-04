@@ -3,13 +3,19 @@ import Navbar from './components/Navbar';
 import CountriesList from './components/CountriesList';
 import CountyDetails from './components/CountryDetails';
 import { Route, Routes } from 'react-router-dom';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import countriesArray from './countries.json'
 
 
 function App() {
 
-  const [countries] = useState(countriesArray)
+  const [countries, setCountries] = useState (countriesArray);
+
+  useEffect(() => {
+      fetch('https://ih-countries-api.herokuapp.com/countries')
+      .then(res => res.json())
+      .then(json => setCountries(json))
+  }, [])
   
   return (
     <div className="App">
